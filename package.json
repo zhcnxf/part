@@ -1,0 +1,37 @@
+{
+  "name": "part",
+  "description": "A json partial selector",
+  "version": "0.1.0-snapshot",
+  "homepage": "https://github.com/zhcnxf/part",
+  "author": {
+    "name": "zhcnxf",
+    "email": "zhcnxf@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhcnxf/part.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zhcnxf/part/issues"
+  },
+  "licenses": [
+    {
+      "type": "Apache License, Version 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "main": "lib/part",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt nodeunit"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt": "~0.4.2"
+  },
+  "keywords": ["json", "partial"]
+}
