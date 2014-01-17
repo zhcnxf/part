@@ -46,5 +46,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 _(Nothing yet)_
 
 ## License
-Copyright (c) 2014 zhcnxf
+Copyright (c) 2014 zhcnxf    
 Licensed under the Apache License, Version 2.0
