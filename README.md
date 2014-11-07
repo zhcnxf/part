@@ -1,13 +1,13 @@
 # part [![Build Status](https://secure.travis-ci.org/zhcnxf/part.png?branch=master)](http://travis-ci.org/zhcnxf/part)
 
-A json partial selector
+A json part selector
 
 ## Install
-Install the module with: `npm install https://github.com/zhcnxf/part/tarball/0.1.0-snapshot`, or in `package.json` add a dependency:
+Install the module with: `npm install https://github.com/zhcnxf/part/tarball/master`, or in `package.json` add a dependency:
 
 ```json
 "dependencies": {
-    "part": "https://github.com/zhcnxf/part/tarball/0.1.0-snapshot"
+    "part": "https://github.com/zhcnxf/part/tarball/master"
 }
 ```
 ## Usage
@@ -24,9 +24,9 @@ var song = {
     }
 };
 
-var partial = song.partial("author,poetry(poet,pai)");
+var part = song.part("author,poetry(poet,pai)");
 
-console.log(partial);
+console.log(part);
 ```
 output:
 

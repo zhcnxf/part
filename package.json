@@ -1,7 +1,7 @@
 {
   "name": "part",
-  "description": "A json partial selector",
-  "version": "0.1.0-snapshot",
+  "description": "A json part selector",
+  "version": "0.2.0",
   "homepage": "https://github.com/zhcnxf/part",
   "author": {
     "name": "zhcnxf",

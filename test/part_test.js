@@ -17,26 +17,32 @@
  test.ifError(value)
  */
 
-"use strict";
-
 var part = require("../lib/part.js");
 
-exports["Test parse"] = function(test) {
-	var selector = "id,performer,song(poetry.id,poetry.poet),music";
-	var expected = [ "id", "performer", "music" ];
-	expected.song = [];
-	expected.song.poetry = [ "id", "poet" ];
+exports["Test Sel"] = {
+    "Sel defination" : function(test) {
+        var selector = "id,performer,song(poetry.id,poetry.poet),music";
+        var expected = [ "id", "performer", "music" ];
+        expected.song = [];
+        expected.song.poetry = [ "id", "poet" ];
 
-	test.ok(part.parse, "parse is not defined");
-	test.equal(part.parse.constructor, Function, "parse is not a function");
-	test.deepEqual(part.parse(selector), expected, "surprise!");
-	test.done();
-};
+        test.ok(part.Sel, "parse is not defined");
+        test.equal(part.Sel.constructor, Function, "parse is not a function");
+        test.deepEqual(part.Sel(selector), expected, "surprise!");
+        test.done();
+    },
+    "Sel#covers" : function(test) {
+        var sel = part.Sel("id,song,music");
+        test.ok(sel.covers("id,song(poetry)"));
+        test.ok(sel.covers("song.poetry.poet,music.id"));
+        test.done();
+    }
+}
 
-exports["Test object.partial"] = {
+exports["Test Object#part"] = {
 	setUp : function(done) {
 		this.selector = "id,performer,song(poetry.id,poetry.poet),music";
-		this.parsed = part.parse(this.selector);
+		this.parsed = part.Sel(this.selector);
 		this.object = {
 			id : 1,
 			performer : "Faye Wang",
@@ -81,26 +87,25 @@ exports["Test object.partial"] = {
 		delete this.expected;
 		done();
 	},
-	"partial extension" : function(test) {
-		test.ok(this.object.partial, "partial is not defined");
-		test.equal(this.object.partial.constructor, Function, "partial is not a function");
+	"Object extension" : function(test) {
+		test.ok(this.object.part, "Object#part is not defined");
+		test.equal(this.object.part.constructor, Function, "Object#part is not a function");
 		test.done();
 	},
-	"partial(selector)" : function(test) {
-		test.deepEqual(this.object.partial(this.selector), this.expected,
-				"surprise!");
+	"Object#part(unparsed)" : function(test) {
+		test.deepEqual(this.object.part(this.selector), this.expected, "surprise!");
 		test.done();
 	},
-	"partial(parsed)" : function(test) {
-		test.deepEqual(this.object.partial(this.parsed), this.expected, "surprise!");
+	"Object#part(parsed)" : function(test) {
+		test.deepEqual(this.object.part(this.parsed), this.expected, "surprise!");
 		test.done();
 	}
 };
 
-exports["Test array.partial"] = {
+exports["Test Array#part"] = {
 	setUp : function(done) {
 	    this.selector = "name";
-		this.parsed = part.parse(this.selector);
+		this.parsed = part.Sel(this.selector);
         this.array = [ {id: 1, name: "Jame Green"},
 	            {id: 2, name: "Kate Green"},
 	            {id: 3, name: "Mis Green"},
@@ -118,19 +123,17 @@ exports["Test array.partial"] = {
 		delete this.expected;
 		done();
 	},
-	"partial extension" : function(test) {
-		test.ok(this.array.partial, "partial is not defined");
-		test.equal(this.array.partial.constructor, Function, "partial is not a function");
+	"Array extension" : function(test) {
+		test.ok(this.array.part, "Array#part is not defined");
+		test.equal(this.array.part.constructor, Function, "Array#part is not a function");
 		test.done();
 	},
-	"partial(selector)" : function(test) {
-		test.deepEqual(this.array.partial(this.selector), this.expected,
-				"surprise!");
+	"Array#part(unparsed)" : function(test) {
+		test.deepEqual(this.array.part(this.selector), this.expected, "surprise!");
 		test.done();
 	},
-	"partial(parsed)" : function(test) {
-		test.deepEqual(this.array.partial(this.parsed), this.expected,
-				"surprise!");
+	"Array#part(parsed)" : function(test) {
+		test.deepEqual(this.array.part(this.parsed), this.expected, "surprise!");
 		test.done();
 	}
 };

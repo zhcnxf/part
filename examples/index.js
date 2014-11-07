@@ -11,7 +11,7 @@ var song = {
 };
 
 
-var partial = song.partial("author,poetry(poet,pai)");
+var part = song.part("author,poetry(poet,pai)");
 
-console.log(partial);
+console.log(part);
 
